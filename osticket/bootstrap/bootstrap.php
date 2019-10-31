@@ -76,7 +76,7 @@ class erLhcoreClassExtensionOsticket
         $result = curl_exec($ch);
         $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
-        
+
         if ($code != 201) {
             throw new Exception('Unable to create ticket: ' . $result);
         }
@@ -167,7 +167,8 @@ class erLhcoreClassExtensionOsticket
                 $chat->city,
                 $chat->user_tz_identifier
             ), $this->configData['message'])),
-            'ip' => $chat->ip
+            'ip' => $chat->ip,
+            'topicId' => 1,// General Inquiry
         );
 
         return $data;
